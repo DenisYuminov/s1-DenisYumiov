@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Create Recipe</h1>
+    <form method="post" action="/recipes">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" placeholder="Enter title" required>
+        <br>
+        <label for="image">Image:</label>
+        <input type="text" id="image" name="image" placeholder="Enter image URL" required>
+        <br>
+        <label for="time_to_cook">Time to Cook:</label>
+        <input type="text" id="time_to_cook" name="time_to_cook" placeholder="Enter time to cook" required>
+        <br>
+        <label for="time_to_prepare">Time to Prepare:</label>
+        <input type="text" id="time_to_prepare" name="time_to_prepare" placeholder="Enter time to prepare" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" placeholder="Enter description" required></textarea>
+        <br>
+        <label for="kcal">Kcal:</label>
+        <input type="number" id="kcal" name="kcal" placeholder="Enter kcal" required>
+        <br>
+        <label for="fat">Fat:</label>
+        <input type="number" id="fat" name="fat" placeholder="Enter fat" required>
+        <br>
+        <label for="saturates">Saturates:</label>
+        <input type="number" id="saturates" name="saturates" placeholder="Enter saturates" required>
+        <br>
+        <label for="protein">Protein:</label>
+        <input type="number" id="protein" name="protein" placeholder="Enter protein" required>
+        <br>
+        <label for="ingredients">Ingredients:</label>
+        <textarea id="ingredients" name="ingredients" placeholder="Enter ingredients" required></textarea>
+        <br>
+        <label for="tags">Tags:</label>
+        <textarea id="tags" name="tags" placeholder="Enter tags" required></textarea>
+        <br>
+        <label for="method">Method:</label>
+        <textarea id="method" name="method" placeholder="Enter method" required></textarea>
+        <br>
+        <button type="submit">Create</button>
+    </form>
+{% endblock %}

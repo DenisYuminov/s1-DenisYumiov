@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex justify-center flex-col items-center">
+    <div class="flex rounded-3 border-2 p-3 mt-5">
+        <img width="150" src="{{ recipe.image }}" alt="Recipe Image" class="mr-5">
+        <div class="flex flex-col">
+            <span class="text-2xl font-bold">{{ recipe.title }}</span>
+            <h3>Категория:
+                {% for tag in recipe.tags %}
+                    <li>{{ tag.name }}</li>
+                {% endfor %}
+            </h3>
+            <span class="text-lg">Время готовки: {{ recipe.time_to_cook }}</span>
+            <span class="text-lg">Время подготовки: {{ recipe.time_to_prepare }}</span>
+            <span class="text-lg">Описание: {{ recipe.description }}</span>
+            <span class="text-lg">Опубликован: {{ recipe.date }}</span>
+            <span class="text-lg">ккал: {{ recipe.kcal }}</span>
+            <span class="text-lg">жиры: {{ recipe.fat }}</span>
+            <span class="text-lg">кислоты: {{ recipe.saturates }}</span>
+            <span class="text-lg">белки: {{ recipe.protein }}</span>
+
+            <h3>Ингридиенты:</h3>
+
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient.name }}</li>
+                {% endfor %}
+            <h3>Метод:</h3>
+            <ol>
+                {% for method in recipe.methods %}
+                    <li>Шаг {{ loop.index }}</li>
+                    <li>{{ method.text }}</li>
+                    <li></li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+    {% if current_user.id == recipe.user_id %}
+    <div class="flex justify-end mt-3">
+        <a href="/edit/{{ recipe.id }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Edit</a>
+        <a href="/delete/{{ recipe.id }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+

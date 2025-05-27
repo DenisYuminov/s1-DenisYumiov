@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script>
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="flex justify-center flex-col items-center">
+
+    {% for recipe in recipes %}
+    <a href="{{ url_for('get_recipe_page', recipe_id=recipe.id) }}" class="recipe-link">
+            <div class="flex rounded-3 border-2 p-3 mt-5">
+                <img width="150" src="{{ recipe.image }}" alt="Recipe Image" class="mr-5">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-bold">{{ recipe.title }}</span>
+                    <span class="text-lg">Time to Cook: {{ recipe.time_to_cook }}</span>
+                    <span class="text-lg">Time to Prepare: {{ recipe.time_to_prepare }}</span>
+                    <span class="text-lg">Description: {{ recipe.description }}</span>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
